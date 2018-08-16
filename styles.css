@@ -109,20 +109,28 @@ Header
 ------------------------------
 */
 
-header {
+#main {
+  height: 100em;
+}
+
+.site-header {
   background: hsl(0,0%,20%);
   line-height: 1;
   margin-bottom: 1.5em;
-  padding: 1em;
+  padding: 1em 1em 1.5em 1em;
   position: relative;
   z-index: 2;
 }
 
 @media screen and (min-width: 40em) {
-  header {
+  .site-header {
     padding: 1.5em;
   }
-  .js-enabled header {
+}
+
+@media screen and (min-height: 30em) {
+  .js-enabled .site-header {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
   }
@@ -157,7 +165,7 @@ header {
 .site-nav .home {
   font-weight: bold;
   line-height: 1.5;
-  margin-bottom: 1em;
+  margin-bottom: 1.25em;
 }
 
 .site-nav .home span {
@@ -190,7 +198,7 @@ header {
 .js-enabled .site-nav .about {
   display: inline-block;
   margin-bottom: 0;
-  margin-right: 11.5em;
+  margin-right: 10em;
   position: static;
   text-align: right;
   width: auto;
@@ -223,7 +231,7 @@ header {
   right: 0;
   text-align: left;
   top: calc(-0.5em - 1px);
-  width: 10em;
+  width: 8.5em;
 }
 
 .js-enabled .variations:hover {
@@ -249,6 +257,11 @@ header {
 .v-list {
   column-count: 2;
   column-gap: 1.5em;
+  -moz-font-feature-settings:"tnum" 1; 
+  -ms-font-feature-settings:"tnum" 1; 
+  -o-font-feature-settings:"tnum" 1; 
+  -webkit-font-feature-settings:"tnum" 1; 
+  font-feature-settings:"tnum" 1;
 }
 
 .js-enabled .v-list {
@@ -292,7 +305,6 @@ header {
 
 .v-item {
   display: block;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -333,12 +345,30 @@ header {
   width: calc(100% + 1em);
 }
 
+.js-enabled .v-item:nth-child(-n+9) .v-link {
+  padding-left: calc(0.5em + 1ch);
+}
+
+.closed .v-item:nth-child(-n+9) .v-link {
+  padding-left: 0.5em;
+}
+
 .js-enabled .v-link:hover {
   color: white;
 }
 
 .js-enabled .v-item:last-child .v-link {
   margin-bottom: 0.25em;
+}
+
+.js-enabled .amount {
+  position: absolute;
+  /*right: calc(0.5em + 1ch);*/
+  right: 0.5em;
+}
+
+.closed .amount {
+  position: static;
 }
 
 .js-enabled .v-subhead,

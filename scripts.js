@@ -41,6 +41,7 @@ for (i = 0; i < dropDown.length; ++i) {
 togglify('.v-subhead');
 
 // Close the dropdown when the user clicks outside of it
+// http://blustemy.io/detecting-a-click-outside-an-element-in-javascript/
 
 document.addEventListener("click", function(evt) {  
   var dropdownElement = document.querySelector('.variations'),
