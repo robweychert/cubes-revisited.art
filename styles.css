@@ -76,26 +76,28 @@ html {
 }
 
 body {
-  background: black;
+  background: #333;
   color: #ccc;
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
 }
 
 main {
+  background: black;
   position: relative;
   z-index: 1;
 }
 
 a {
+  border-bottom: 1px solid hsl(0,0%,60%);
   color: inherit;
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  border-color: white;
   color: white;
+  border-bottom: 1px solid hsl(0,0%,60%);
 }
 
 svg {
@@ -109,14 +111,10 @@ Header
 ------------------------------
 */
 
-#main {
-  height: 100em;
-}
-
 .site-header {
   background: hsl(0,0%,20%);
   line-height: 1;
-  margin-bottom: 1.5em;
+  /*margin-bottom: 1.5em;*/
   padding: 1em 1em 1.5em 1em;
   position: relative;
   z-index: 2;
@@ -149,6 +147,10 @@ Header
   text-align: center;
 }
 
+.site-nav a {
+  border-bottom: none;
+}
+
 @media screen and (min-width: 40em) {
   .site-nav {
     text-align: left;
@@ -163,6 +165,7 @@ Header
 /* Title ------------------ */
 
 .site-nav .home {
+  color: white;
   font-weight: bold;
   line-height: 1.5;
   margin-bottom: 1.25em;
@@ -243,7 +246,7 @@ Header
     padding-top: 1em;
     text-align: left;
   }
-  @supports (display: ggrid) {
+  @supports (display: grid) {
     .variations {
       display: grid;
       grid-gap: 1.5em;
@@ -288,7 +291,7 @@ Header
     column-count: auto;
     width: auto;
   }
-  @supports (display: ggrid) {
+  @supports (display: grid) {
     .v-list {
       grid-column: 2 / span 3;
       width: auto;
@@ -354,6 +357,7 @@ Header
 }
 
 .js-enabled .v-link:hover {
+  border-bottom: none;
   color: white;
 }
 
@@ -443,7 +447,7 @@ Cubes
 
 @media screen and (min-width: 400px) {
   #main {
-    padding: 2em;
+    padding: 2em 2em 3em 2em;
   }
 }
 
@@ -471,7 +475,7 @@ Cubes
   width: 100px;
 }
 
-@supports (display: ggrid) {
+@supports (display: grid) {
   .cubes {
     display: grid;
     grid-gap: 3px;
@@ -523,14 +527,14 @@ Footer
 
 footer {
   background: #333;
-  margin-top: 1.5em;
-  padding: 1.5em 1em 2em 1em;
+  /*margin-top: 1.5em;*/
+  padding: 1.5em 1em 3em 1em;
   text-align: center;
 }
 
 @media screen and (min-width: 40em) {
   footer {
-    padding: 2em 1.5em 3em 1.5em;
+    padding: 2em 1.5em 4em 1.5em;
   }
 }
 
