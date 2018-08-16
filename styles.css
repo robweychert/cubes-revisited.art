@@ -391,24 +391,30 @@ Cube Grid
 ------------------------------
 */
 
-.cubes {
-  background: hsl(0,0%,20%);
-  border-bottom: 2px solid hsl(0,0%,20%);
-  border-top: 2px solid hsl(0,0%,20%);
-  display: grid;
-  grid-gap: 2px;
-  grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+#main {
+  padding: 3px;
 }
 
 @media screen and (min-width: 400px) {
-  .cubes {
-    border: 2px solid hsl(0,0%,20%);
-    /*margin: 2vw;*/
-    margin: 2em;
+  #main {
+    padding: 2em;
   }
 }
 
+.cubes {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+  margin: 0 auto;
+}
+
+._01 .cubes,
+._11 .cubes {
+  max-width: 717px;
+}
+
 .cubes div {
+  border: 1px solid hsl(0,0%,20%);
   background: black;
   position: relative;
 }
