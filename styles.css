@@ -76,8 +76,8 @@ html {
 }
 
 body {
-  background: #333;
-  color: #ccc;
+  background: hsl(0,0%,10%);
+  color: hsl(0,0%,70%);
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
 }
@@ -112,7 +112,7 @@ Header
 */
 
 .site-header {
-  background: hsl(0,0%,20%);
+  background: hsl(0,0%,10%);
   line-height: 1;
   /*margin-bottom: 1.5em;*/
   padding: 1em 1em 1.5em 1em;
@@ -219,13 +219,13 @@ Header
 /* Variations ------------- */
 
 .variations {
-    border-top: 1px solid #666;
+    border-top: 1px solid hsl(0,0%,40%);
     padding-top: 0.5em;
 }
 
 .js-enabled .variations {
-  background: #333;
-  border: 1px solid hsl(0,0%,50%);
+  background: hsl(0,0%,10%);
+  border: 1px solid hsl(0,0%,40%);
   border-radius: 0.25em;
   display: block;
   overflow: hidden;
@@ -283,7 +283,7 @@ Header
     width: auto;
   }
   .v-list {
-    background: #333;
+    background: hsl(0,0%,10%);
     column-count: 3;
     width: calc(((100% - 4.5em) / 4) * 3 + 3em);
   }
@@ -312,7 +312,7 @@ Header
 }
 
 .js-enabled .v-item {
-  border-top: 1px solid #666;
+  border-top: 1px solid hsl(0,0%,30%);
   margin: 0 0.5em;
   width: auto;
 }
@@ -337,7 +337,7 @@ Header
 
 .js-enabled .v-subhead,
 .js-enabled .v-link {
-  background: #333;
+  background: hsl(0,0%,10%);
   display: block;
   padding: 0.5em 2em 0.5em 0.5em;
   position: relative;
@@ -381,7 +381,7 @@ Header
     url(dropdown-sprites.svg)
     right 0.5em top -4em / 1em /* up arrow */
     no-repeat
-    #333;
+    hsl(0,0%,10%);
 }
 
 .js-enabled .v-subhead:after {
@@ -435,6 +435,21 @@ Header
   z-index: 100;
 }
 
+._01 ._01,
+._02 ._02,
+._03 ._03,
+._04 ._04,
+._05 ._05,
+._06 ._06,
+._07 ._07,
+._08 ._08,
+._09 ._09,
+._10 ._10,
+._11 ._11 {
+  color: white;
+  cursor: default;
+}
+
 /*
 ------------------------------
 Cubes
@@ -447,7 +462,7 @@ Cubes
 
 @media screen and (min-width: 400px) {
   #main {
-    padding: 2em 2em 3em 2em;
+    padding: 2em 1.5em 3em 1.5em;
   }
 }
 
@@ -467,7 +482,7 @@ Cubes
 }
 
 .cubes div {
-  border: 1px solid hsl(0,0%,20%);
+  border: 1px solid hsl(0,0%,15%);
   background: black;
   float: left;
   margin: 1.5px;
@@ -526,7 +541,7 @@ Footer
 */
 
 footer {
-  background: #333;
+  background: hsl(0,0%,10%);
   /*margin-top: 1.5em;*/
   padding: 1.5em 1em 3em 1em;
   text-align: center;
