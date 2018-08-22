@@ -76,7 +76,7 @@ html {
 }
 
 body {
-  background: hsl(0,0%,10%);
+  background: hsl(0,0%,15%);
   color: hsl(0,0%,70%);
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
@@ -112,7 +112,7 @@ Header
 */
 
 .site-header {
-  background: hsl(0,0%,10%);
+  background: hsl(0,0%,15%);
   line-height: 1;
   /*margin-bottom: 1.5em;*/
   padding: 1em 1em 1.5em 1em;
@@ -224,7 +224,7 @@ Header
 }
 
 .js-enabled .variations {
-  background: hsl(0,0%,10%);
+  background: hsl(0,0%,15%);
   border: 1px solid hsl(0,0%,40%);
   border-radius: 0.25em;
   display: block;
@@ -283,7 +283,7 @@ Header
     width: auto;
   }
   .v-list {
-    background: hsl(0,0%,10%);
+    background: hsl(0,0%,15%);
     column-count: 3;
     width: calc(((100% - 4.5em) / 4) * 3 + 3em);
   }
@@ -337,7 +337,7 @@ Header
 
 .js-enabled .v-subhead,
 .js-enabled .v-link {
-  background: hsl(0,0%,10%);
+  background: hsl(0,0%,15%);
   display: block;
   padding: 0.5em 2em 0.5em 0.5em;
   position: relative;
@@ -381,7 +381,7 @@ Header
     url(dropdown-sprites.svg)
     right 0.5em top -4em / 1em /* up arrow */
     no-repeat
-    hsl(0,0%,10%);
+    hsl(0,0%,15%);
 }
 
 .js-enabled .v-subhead:after {
@@ -587,7 +587,7 @@ Footer
 */
 
 footer {
-  background: hsl(0,0%,10%);
+  background: hsl(0,0%,15%);
   /*margin-top: 1.5em;*/
   padding: 1.5em 1em 3em 1em;
   text-align: center;
