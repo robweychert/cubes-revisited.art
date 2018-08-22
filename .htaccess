@@ -1,0 +1,5 @@
+<IfModule mod_expires.c>
+  <FilesMatch "serviceworker.js">
+    ExpiresDefault "access plus 0 seconds"
+  </FilesMatch>
+</IfModule>

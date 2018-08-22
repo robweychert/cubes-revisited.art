@@ -378,7 +378,7 @@ Header
 .js-enabled .v-subhead,
 .closed .current {
   background:
-    url(dropdown-sprites.svg)
+    url(sprites.svg)
     right 0.5em top -4em / 1em /* up arrow */
     no-repeat
     hsl(0,0%,15%);
