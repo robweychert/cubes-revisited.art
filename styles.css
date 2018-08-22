@@ -534,6 +534,52 @@ About
 ------------------------------
 */
 
+.essay {
+  margin: 0 auto;
+  max-width: 65ch;
+}
+
+.sequence .guidecube { 
+  fill: none;
+  stroke: #333;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 6px;
+}
+.sequence text {
+  fill: #fff;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 36px;
+  text-anchor: middle;
+}
+
+.sequence .parts > * {
+  opacity: 0;
+  animation-duration: 18s;
+  animation-iteration-count: infinite;
+  animation-name: part-sequence;
+}
+
+.sequence .part01 { animation-delay: 00.0s; }
+.sequence .part02 { animation-delay: 01.5s; }
+.sequence .part03 { animation-delay: 03.0s; }
+.sequence .part04 { animation-delay: 04.5s; }
+.sequence .part05 { animation-delay: 06.0s; }
+.sequence .part06 { animation-delay: 07.5s; }
+.sequence .part07 { animation-delay: 09.0s; }
+.sequence .part08 { animation-delay: 10.5s; }
+.sequence .part09 { animation-delay: 12.0s; }
+.sequence .part10 { animation-delay: 13.5s; }
+.sequence .part11 { animation-delay: 15.0s; }
+.sequence .part12 { animation-delay: 16.5s; }
+
+@keyframes part-sequence {
+  0% { opacity: 0; }
+  4.166666666666667% { opacity: 1; }   /* 0.5s */
+  8.333333333333334% { opacity: 1; }   /* 1.0s */
+  12.500000000000001% { opacity: 0; }  /* 1.5s */
+}
+
 /*
 ------------------------------
 Footer
