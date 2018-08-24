@@ -1,5 +1,8 @@
 const version = 'V0.01';
 const staticCacheName = version + 'staticfiles';
+const imageCacheName = 'images';
+
+const cacheList = [ staticCacheName, imageCacheName ];
 
 addEventListener( 'install', installEvent => {
 	skipWaiting();
@@ -10,9 +13,10 @@ addEventListener( 'install', installEvent => {
 			// staticCache.addAll([]);
 			// Must have: these items must be cached for the Service Worker to complete installation
 			return staticCache.addAll([
-				'styles.css',
-				'sprites.svg',
-				'scripts.js'
+				'/assets/styles.css',
+				'/assets/sprites.svg',
+				'/assets/scripts.js',
+				'/offline.html'
 			]); // end return addAll
 		}) // end open then
 	); // end waitUntil
@@ -20,26 +24,55 @@ addEventListener( 'install', installEvent => {
 
 addEventListener('fetch', fetchEvent => {
 	const request = fetchEvent.request;
+	// When the user requests an HTML file
+	if (request.headers.get('Accept').includes('text/html')) {
+		fetchEvent.respondWith(
+		// Fetch that page from the network
+			fetch(request)
+			.catch( error => {
+				// Otherwise show the fallback page
+				return caches.match('/offline.html');
+			}) // end fetch catch
+		); // end respondWith
+		return; // Go no further
+	} // end if
+	// When the user requests an image
+	if (request.headers.get('Accept').includes('image')) {
+		fetchEvent.respondWith(
+			// Look for a cached version of the image
+			caches.match(request)
+			.then( responseFromCache => {
+				if (responseFromCache) {
+					return responseFromCache;
+				} // end if
+				// Otherwise fetch the image from the network
+				return fetch(request)
+				.then( responseFromFetch => {
+					// Put a copy in the cache
+					const copy = responseFromFetch.clone();
+					fetchEvent.waitUntil(
+						caches.open(imageCacheName)
+						.then( imageCache => {
+							return imageCache.put(request, copy);
+						}) // end open then
+					); // end waitUntil
+					return responseFromFetch;
+				}); // end fetch then and return
+			}) // end match then
+		); // end respondWith
+		return; // Go no further
+	} // end if
+	// For everything else...
 	fetchEvent.respondWith(
+		// Look for a cached copy of the file
 		caches.match(request)
 		.then( responseFromCache => {
 			if (responseFromCache) {
 				return responseFromCache;
 			} // end if
-			// Otherwise fetch from the network
+			// Otherwise fetch the file from the network
 			return fetch(request);
 		}) // end match then
-		// fetch(request)
-		// .then(responseFromFetch => {
-		// 	return responseFromFetch;
-		// }) // end fetch then
-		// .catch(error => {
-		// 	return new Response(
-		// 		'<h1>Oops!</h1> <p>Something went wrong.</p>', {
-		// 			headers: {'Content-type': 'text/html; charset=utf-8'}
-		// 		}
-		// 	);
-		// }) // end fetch catch
 	); // end respondWith
 }); // end addEventListner
 
@@ -49,7 +82,7 @@ addEventListener('activate', activateEvent => {
 		.then( cacheNames => {
 			return Promise.all(
 				cacheNames.map( cacheName => {
-					if (cacheName != staticCacheName) {
+					if (!cacheList.includes(cacheName)) {
 						return caches.delete(cacheName);
 					} // end if
 				}) // end map

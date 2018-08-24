@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incomplete Open Cubes Revisited</title>
+    <meta name="description" content="Exploring the extended potential of Sol LeWitt’s ‘Incomplete Open Cubes’">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="serviceworker" href="/serviceworker.js">
+</head>
+
+<body class="home">
+
+<header class="site-header">
+  <a class="skip" href="#main">Skip navigation</a>
+  <nav class="site-nav">
+    <h1 class="home"><a href="/">Incomplete <span>Open Cubes</span> Revisited</a></h1>
+    <ul class="interior-nav">
+      <li class="about"><a href="/about/">About</a></li>
+      <li class="variations">
+        <span class="v-subhead">Variations</span>
+        <ol class="v-list">
+          <li class="v-item"><a class="v-link _01" href="/01/">1-part: <span class="amount">12</span></a></li>
+          <li class="v-item"><a class="v-link _02" href="/02/">2-part: <span class="amount">66</span></a></li>
+          <li class="v-item"><a class="v-link _03" href="/03/">3-part: <span class="amount">220</span></a></li>
+          <li class="v-item"><a class="v-link _04" href="/04/">4-part: <span class="amount">495</span></a></li>
+          <li class="v-item"><a class="v-link _05" href="/05/">5-part: <span class="amount">792</span></a></li>
+          <li class="v-item"><a class="v-link _06" href="/06/">6-part: <span class="amount">924</span></a></li>
+          <li class="v-item"><a class="v-link _07" href="/07/">7-part: <span class="amount">792</span></a></li>
+          <li class="v-item"><a class="v-link _08" href="/08/">8-part: <span class="amount">495</span></a></li>
+          <li class="v-item"><a class="v-link _09" href="/09/">9-part: <span class="amount">220</span></a></li>
+          <li class="v-item"><a class="v-link _10" href="/10/">10-part: <span class="amount">66</span></a></li>
+          <li class="v-item"><a class="v-link _11" href="/11/">11-part: <span class="amount">12</span></a></li>
+        </ol>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script src="/assets/scripts.js"></script>
+
+<main id="main" aria-label="Content">
+  This is my offline fallback page.
+</main>
+
+<footer>
+  <p>Made by <a href="http://robweychert.com/">Rob Weychert</a><!--  with <a href="https://www.python.org/">Python</a> and <a href="http://drawbot.com/">DrawBot</a> --> in 2018</p>
+  <p>Source code on <a href="#">GitHub</a></p>
+  <p>Inspired by <a href="https://metmuseum.org/art/collection/search/691091"><cite>Incomplete Open Cubes</cite></a> <span>(Sol LeWitt, 1974)</span></p>
+</footer>
+
+<script>
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('/serviceworker.js')
+  }
+</script>
+
+</body>
+</html>
