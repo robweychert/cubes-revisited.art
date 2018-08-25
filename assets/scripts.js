@@ -1,3 +1,5 @@
+document.body.className += ' js-enabled';
+
 // Toggle the dropdown open and closed
 
 function navToggle() {
@@ -12,7 +14,23 @@ function togglify(item) {
   document.querySelector(item).removeAttribute('href');
 }
 
-document.body.className += ' js-enabled';
+// Close the dropdown when the Escape key is pressed
+// https://medium.com/@uistephen/keyboardevent-key-for-cross-browser-key-press-check-61dbad0a067a
+
+document.addEventListener('keyup', function (event) {
+  if (event.defaultPrevented) {
+    return;
+  }
+
+  var key = event.key || event.keyCode;
+
+  if (key === 'Escape' || key === 'Esc' || key === 27) {
+    element = document.querySelector('.variations');
+    if (!element.className.includes('closed')) {
+      element.classList.toggle('closed');
+    }
+  }
+});
 
 // Close the dropdown by default
 
