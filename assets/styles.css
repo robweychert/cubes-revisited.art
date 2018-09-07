@@ -100,6 +100,14 @@ a:hover {
   border-bottom: 1px solid hsl(0,0%,60%);
 }
 
+cite:before {
+  content: "‘";
+}
+
+cite:after {
+  content: "’";
+}
+
 svg {
   display: block;
   width: 100%;
@@ -166,7 +174,7 @@ Header
 
 .site-nav .home {
   color: white;
-  font-weight: bold;
+  /*font-weight: bold;*/
   line-height: 1.5;
   margin-bottom: 1.25em;
 }
@@ -539,6 +547,49 @@ About
   max-width: 65ch;
 }
 
+@supports (display: grid) {
+  .rotated.cubes {
+    grid-template-columns: repeat( 3, 1fr );
+  }
+  .rotated.cubes .sequence {
+    grid-column: 1 / span 3;
+  }
+  @media screen and (min-width: 500px) {
+    .rotated.cubes {
+      grid-template-columns: repeat( 4, 1fr );
+    }
+    .rotated.cubes .sequence {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    .rotated.cubes {
+      grid-template-columns: repeat( 6, 1fr );
+    }
+    .rotated.cubes .sequence {
+      grid-column: 1 / span 3;
+      grid-row: 1 / span 3;
+    }
+  }
+  @media screen and (min-width: 700px) {
+    .rotated.cubes {
+      grid-template-columns: repeat( 7, 1fr );
+    }
+    .rotated.cubes .sequence {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
+    }
+  }
+}
+
+.cubes text {
+  fill: #fff;
+  font-size: 36px;
+  text-anchor: middle;
+  transform: translateY(10px);
+}
+
 .sequence .guidecube { 
   fill: none;
   stroke: #333;
@@ -546,18 +597,12 @@ About
   stroke-linejoin: round;
   stroke-width: 6px;
 }
-.sequence text {
-  fill: #fff;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 36px;
-  text-anchor: middle;
-}
 
 .sequence .parts > * {
-  opacity: 0;
   animation-duration: 18s;
   animation-iteration-count: infinite;
   animation-name: part-sequence;
+  opacity: 0;
 }
 
 .sequence .part01 { animation-delay: 00.0s; }
@@ -578,6 +623,115 @@ About
   4.166666666666667% { opacity: 1; }   /* 0.5s */
   8.333333333333334% { opacity: 1; }   /* 1.0s */
   12.500000000000001% { opacity: 0; }  /* 1.5s */
+}
+
+.rotation text {
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-name: rotation;
+  opacity: 0;
+}
+
+@keyframes rotation {
+  0% { opacity: 0; }
+  8.333333333333333% { opacity: 1; }/* 0.5s */
+  50% { opacity: 1; }/* 3s */
+  58.333333333333333% { opacity: 0; } /* 3.5s */
+}
+
+/*
+------------------------------
+Home
+------------------------------
+*/
+
+.home #main {
+  padding: 0 5vw;
+}
+
+.home-wrap {
+  text-align: center;
+}
+
+.home-wrap span {
+  white-space: nowrap;
+}
+
+.intro {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 5vw;
+}
+
+.intro-title {
+  color: white;
+  font-size: 12vw;
+  line-height: 1.1;
+  order: 2;
+}
+
+.intro-text {
+  order: 3;
+}
+
+.intro-description {
+  margin: 1em 0;
+}
+
+.intro-cube {
+  order: 1;
+  width: 40%;
+}
+
+@media screen and (min-width: 30em) {
+  @supports (display: grid) {
+    .home #main {
+      padding: 0 7vw;
+    }
+    .intro {
+      align-items: flex-start;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 10vw 0;
+      text-align: left;
+    }
+    .intro-title {
+      align-self: flex-end;
+      grid-column: 1 / span 2;
+    }
+    .intro-text {
+      font-size: 3.5vw;
+      grid-column: 1 / span 1;
+      grid-row: 2;
+    }
+    .intro-cube {
+      grid-column: 2 / span 1;
+      grid-row: 2;
+      margin-top: -20%;
+      width: 100%;
+    }
+  }
+}
+
+.nav-home ol {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.nav-home a {
+  border: 1px solid hsl(0,0%,15%);
+  display: block;
+  padding-bottom: 1em;
+}
+
+.nav-home a:focus,
+.nav-home a:hover {
+  background: hsl(0,0%,15%);
+  border-color: white;
 }
 
 /*
