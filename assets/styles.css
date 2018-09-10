@@ -717,31 +717,32 @@ Home
   width: 1em;
 }
 
-/*.nav-home ol {
-  display: grid;
-  grid-gap: 3px;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0 3px;
+.nav-home ol {
+  -moz-font-feature-settings:"tnum" 1; 
+  -ms-font-feature-settings:"tnum" 1; 
+  -o-font-feature-settings:"tnum" 1; 
+  -webkit-font-feature-settings:"tnum" 1; 
+  font-feature-settings:"tnum" 1;
+  margin: 0 auto 2em;
+  max-width: calc(15em + 6px);
+  padding: 0 3px;
 }
 
-.nav-home li {
-  align-items: stretch;
-  display: flex;
-}*/
+.nav-home li:nth-child(1) span,
+.nav-home li:nth-child(2) span,
+.nav-home li:nth-child(10) span,
+.nav-home li:nth-child(11) span {
+  padding-left: 1ch;
+}
 
-.nav-home ol {
-  display: grid;
-  grid-gap: 3px;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 3px;
+.nav-home li + li {
+  margin-top: 3px;
 }
 
 .nav-home a {
   align-items: center;
   border: 1px solid hsl(0,0%,15%);
   display: flex;
-  /*margin: 3px;*/
-  /*padding-bottom: 1em;*/
 }
 
 .nav-home a:focus,
@@ -751,15 +752,31 @@ Home
 }
 
 .nav-home div {
-  border-right: 1px solid hsl(0,0%,15%);
-  margin-right: 0.5em;
+  flex-grow: 1;
   padding: 0.5em;
-  width: 3em;
 }
 
-.nav-home a:focus div,
-.nav-home a:hover div {
-  border-color: white;
+.nav-home svg {
+  fill: none;
+  margin: 0 0 0 auto;
+  max-width: 3em;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.25px;
+}
+
+.nav-home p {
+  padding-left: 1.5ch;
+  text-align: left;
+}
+
+.nav-home li:nth-child(n+10) p {
+  padding-left: 0.5ch;
+}
+
+.nav-home p {
+  flex-grow: 2.25;
 }
 
 @supports (display: grid) {
@@ -788,6 +805,15 @@ Home
       margin-top: -30%;
       width: 100%;
     }
+    .nav-home ol {
+      display: grid;
+      grid-gap: 3px;
+      grid-template-columns: 1fr 1fr;
+      max-width: calc(30em + 6px);
+    }
+    .nav-home li + li {
+      margin: 0;
+    }
   }
 
   @media screen and (min-width: 720px) {
@@ -809,6 +835,10 @@ Home
       grid-row: 1 / span 2;
       margin: 0;
     }
+    .nav-home ol {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: calc(45em + 6px);
+    }
   }
 
   @media screen and (min-width: 1040px) {
@@ -827,6 +857,10 @@ Home
     .intro-cube {
       grid-column: 1 / span 1;
       padding-right: 1vw;
+    }
+    .nav-home ol {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: calc(60em + 6px);
     }
   }
 
