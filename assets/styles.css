@@ -661,6 +661,8 @@ Home
   white-space: nowrap;
 }
 
+/* Intro ------------------ */
+
 .intro {
   align-items: center;
   justify-content: center;
@@ -690,6 +692,78 @@ Home
   width: 35%;
 }
 
+@supports (display: grid) {
+
+  @media screen and (min-width: 480px) {
+    .intro {
+      align-items: start;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 10vw 7vw;
+      text-align: left;
+    }
+    .intro-title {
+      align-self: end;
+      font-size: 10vw;
+      grid-column: 1 / span 2;
+    }
+    .intro-text {
+      font-size: 3.5vw;
+      grid-column: 1 / span 1;
+      grid-row: 2;
+    }
+    .intro-cube {
+      grid-column: 2 / span 1;
+      grid-row: 2;
+      margin-top: -30%;
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    .intro {
+      grid-template-columns: 1fr 1fr;
+      padding: 7vw;
+    }
+    .intro-title {
+      font-size: 7vw;
+      grid-column: 1 / span 1;
+    }
+    .intro-text {
+      font-size: 2.5vw;
+      grid-column: 1 / span 1;
+    }
+    .intro-cube {
+      align-self: center;
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 2;
+      margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 1040px) {
+    .intro {
+      grid-template-columns: 1fr 2fr;
+      padding: 4vw;
+    }
+    .intro-title {
+      font-size: 5vw;
+      grid-column: 2 / span 1;
+    }
+    .intro-text {
+      font-size: 1.75vw;
+      grid-column: 2 / span 1;
+    }
+    .intro-cube {
+      grid-column: 1 / span 1;
+      padding-right: 1vw;
+    }
+  }
+
+}
+
+/* Home Nav --------------- */
+
 .nav-home h2 {
   color: white;
   animation-duration: 2s;
@@ -706,7 +780,7 @@ Home
 .nav-home h2 span {
   background:
     url(sprites.svg)
-    left 0 top -2.5em / 1em /* up arrow */
+    left 0 top -2.5em / 1em /* down arrow */
     no-repeat
     transparent;
   display: block;
@@ -767,12 +841,12 @@ Home
 }
 
 .nav-home p {
-  padding-left: 1.5ch;
+  padding-left: 1ch;
   text-align: left;
 }
 
 .nav-home li:nth-child(n+10) p {
-  padding-left: 0.5ch;
+  padding-left: 0;
 }
 
 .nav-home p {
@@ -782,29 +856,6 @@ Home
 @supports (display: grid) {
 
   @media screen and (min-width: 480px) {
-    .intro {
-      align-items: start;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      padding: 10vw 7vw;
-      text-align: left;
-    }
-    .intro-title {
-      align-self: end;
-      font-size: 10vw;
-      grid-column: 1 / span 2;
-    }
-    .intro-text {
-      font-size: 3.5vw;
-      grid-column: 1 / span 1;
-      grid-row: 2;
-    }
-    .intro-cube {
-      grid-column: 2 / span 1;
-      grid-row: 2;
-      margin-top: -30%;
-      width: 100%;
-    }
     .nav-home ol {
       display: grid;
       grid-gap: 3px;
@@ -817,24 +868,6 @@ Home
   }
 
   @media screen and (min-width: 720px) {
-    .intro {
-      grid-template-columns: 1fr 1fr;
-      padding: 7vw;
-    }
-    .intro-title {
-      font-size: 7vw;
-      grid-column: 1 / span 1;
-    }
-    .intro-text {
-      font-size: 2.5vw;
-      grid-column: 1 / span 1;
-    }
-    .intro-cube {
-      align-self: center;
-      grid-column: 2 / span 1;
-      grid-row: 1 / span 2;
-      margin: 0;
-    }
     .nav-home ol {
       grid-template-columns: repeat(3, 1fr);
       max-width: calc(45em + 6px);
@@ -842,22 +875,6 @@ Home
   }
 
   @media screen and (min-width: 1040px) {
-    .intro {
-      grid-template-columns: 1fr 2fr;
-      padding: 4vw;
-    }
-    .intro-title {
-      font-size: 5vw;
-      grid-column: 2 / span 1;
-    }
-    .intro-text {
-      font-size: 1.75vw;
-      grid-column: 2 / span 1;
-    }
-    .intro-cube {
-      grid-column: 1 / span 1;
-      padding-right: 1vw;
-    }
     .nav-home ol {
       grid-template-columns: repeat(4, 1fr);
       max-width: calc(60em + 6px);
