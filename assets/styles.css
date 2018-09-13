@@ -126,19 +126,8 @@ Navigation
   max-width: 480px;
 }
 
-.v-subhead span {
-  background:
-    url(sprites.svg)
-    left 0 top -2.5em / 1em /* down arrow */
-    no-repeat
-    transparent;
-  display: block;
-  margin: 0 auto 1em auto;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  width: 1em;
-  z-index: 4;
+.v-subhead:hover {
+  cursor: default;
 }
 
 .v-list {
@@ -240,9 +229,11 @@ Navigation
   z-index: 2;
 }
 
-.js-enabled .site-header {
-  position: sticky;
-  top: 0;
+@media screen and (min-height: 37em) {
+  .js-enabled .site-header {
+    position: sticky;
+    top: 0;
+  }
 }
 
 .site-header a {
@@ -289,7 +280,7 @@ Navigation
 }
 
 .js-enabled .site-header .variations {
-  border: 1px solid currentColor;
+  border: 1px solid hsl(0,0%,40%);
   position: absolute;
   right: 0;
   text-align: left;
@@ -297,8 +288,14 @@ Navigation
   width: 10em;
 }
 
+.js-enabled .site-header .variations:hover {
+  border-color: white;
+}
+
 .site-header .v-subhead {
+  background: hsl(0,0%,15%);
   margin-bottom: 1em;
+  position: relative;
 }
 
 .js-enabled .site-header .v-subhead {
@@ -307,13 +304,45 @@ Navigation
 }
 
 .js-enabled .site-header .v-subhead span {
+  display: none;
+}
+
+.js-enabled .site-header .v-subhead:hover {
+  color: white;
+}
+
+.js-enabled .site-header .v-subhead:after,
+.js-enabled .site-header .closed .current:after {
+  background:
+    url(sprites.svg)
+    left 0 top -4.5em / 1em /* up arrow */
+    no-repeat
+    transparent;
+  content: "";
+  display: block;
+  height: 1em;
   position: absolute;
-  top: 0.5em;
   right: 0.5em;
+  top: 0.5em;
+  width: 1em;
+}
+
+.js-enabled .site-header .v-subhead:hover:after {
+  background-position: left 0 top -6.5em; /* up arrow highlighted */
+}
+
+.js-enabled .site-header .closed .v-subhead:after,
+.js-enabled .site-header .closed .current:after {
+  background-position: left 0 top -0.5em; /* down arrow */
+}
+
+.js-enabled .site-header .closed .v-subhead:hover:after,
+.js-enabled .site-header .closed .current:hover:after {
+  background-position: left 0 top -2.5em; /* down arrow highlighted */
 }
 
 .site-header .v-list {
-  border: 1px solid currentColor;
+  border: 1px solid hsl(0,0%,40%);
   border-bottom: none;
   border-right: none;
   grid-gap: 0;
@@ -326,23 +355,34 @@ Navigation
 }
 
 .site-header .v-item {
-  background: hsl(0,0%,15%);
-  border: 1px solid currentColor;
+  border: 1px solid hsl(0,0%,40%);
   border-left: none;
   border-top: none;
   margin: 0;
 }
 
-.js-enabled .v-item {
+.js-enabled .site-header .v-item {
   border: none;
-  border-top: 1px solid currentColor;
+  border-top: 1px solid hsl(0,0%,40%);
 }
 
-.js-enabled .closed .v-item {
+.js-enabled .site-header .closed .v-item {
   border: none;
   position: absolute;
   top: 0;
   width: 100%;
+}
+
+.site-header .v-link {
+  background: hsl(0,0%,15%);
+  padding: 0.25em;
+}
+
+/* Why doesn’t this work? */
+
+.site-header .vlink:focus,
+.site-header .vlink:hover {
+  background: hsl(0,0%,30%);
 }
 
 .v-link.current,
@@ -359,15 +399,22 @@ Navigation
 ._11 ._11 {
   color: white;
   cursor: default;
+  position: relative;
 }
 
 .closed .v-link {
-  display: none;
-}
-
-.closed .v-link.current {
   display: block;
   padding: 0.5em;
+  position: relative;
+}
+
+.closed .v-subhead,
+.closed .current {
+  z-index: 4;
+}
+
+.closed .v-link:focus {
+  z-index: 5;
 }
 
 .closed .v-link div {
