@@ -117,6 +117,22 @@ svg {
 
 /*
 ------------------------------
+Cubes
+------------------------------
+*/
+
+#main {
+  padding: 3px;
+}
+
+@media screen and (min-width: 400px) {
+  #main {
+    padding: 1em;
+  }
+}
+
+/*
+------------------------------
 Navigation
 ------------------------------
 */
@@ -512,14 +528,92 @@ Navigation
   margin-bottom: 2em;
 }
 
-.home .v-link {
+.home .v-link,
+.prev-next .v-link {
   border: 1px solid hsl(0,0%,15%);
   padding: 0.5em;
 }
 
 .home .v-link:focus,
-.home .v-link:hover {
+.home .v-link:hover,
+.prev-next .v-link:focus,
+.prev-next .v-link:hover {
   border-color: white;
+}
+
+
+/* Prev/Next Nav ---------- */
+
+.site-nav.prev-next {
+  margin: 1em 0 1.25em;
+}
+
+.site-nav.prev-next .v-list {
+  max-width: calc(65ch + 2em);
+  padding: 0;
+}
+
+.prev,
+.next {
+  margin: 0 1em;
+  position: relative;
+}
+
+.prev:before,
+.next:after {
+  background:
+    url(sprites.svg)
+    left 0 top -8.5em / 1em /* left arrow */
+    no-repeat
+    transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: absolute;
+  width: 1em;
+}
+
+.prev:before {
+  left: -1em;
+}
+
+.prev:hover:before,
+.prev:focus:before {
+  background-position: left 0 top -10.5em; /* left arrow highlighted */
+}
+
+.next:after {
+  background-position: left 0 top -12.5em; /* right arrow */
+  right: -1em;
+}
+
+.next:hover:after,
+.next:focus:after {
+  background-position: left 0 top -14.5em; /* left arrow highlighted */
+}
+
+@media screen and (min-width: 400px) {
+  .site-nav.prev-next {
+    margin: 2em 0 1.5em;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .site-nav.prev-next {
+    margin: 2em 0 1.6em;
+    max-width: 100%;
+  }
+  .site-nav.prev-next .v-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  @supports (display: grid) {
+    .prev {
+      margin-right: 0;
+    }
+    .next {
+      margin-left: 0;
+    }
+  }
 }
 
 
@@ -528,10 +622,6 @@ Navigation
 Cubes
 ------------------------------
 */
-
-#main {
-  padding: 3px 3px 0 3px;
-}
 
 .cubes {
   margin: 0 auto;
@@ -596,10 +686,6 @@ Cubes
 }
 
 @media screen and (min-width: 400px) {
-  #main {
-    /*padding: 2em 1.5em 3em 1.5em;*/
-    padding: 1em;
-  }
   .cubes {
     grid-template-columns: repeat( auto-fit, minmax(105px, 1fr) );
   }
