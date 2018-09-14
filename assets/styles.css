@@ -828,7 +828,7 @@ Home
 
 .intro-title {
   color: white;
-  font-size: 12vw;
+  font-size: 2em;
   line-height: 1.1;
   order: 2;
 }
@@ -843,10 +843,17 @@ Home
 
 .intro-cube {
   order: 1;
-  width: 35%;
+  width: 15em;
 }
 
 @supports (display: grid) {
+
+  .intro-title {
+    font-size: 12vw;
+  }
+  .intro-cube {
+    width: 35%;
+  }
 
   @media screen and (min-width: 480px) {
     .intro {
