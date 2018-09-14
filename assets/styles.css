@@ -51,6 +51,7 @@ table {
   border-spacing: 0;
 }
 
+
 /*
 ----------------------------------------
 CUBES REVISITED STYLES
@@ -113,6 +114,7 @@ svg {
   width: 100%;
 }
 
+
 /*
 ------------------------------
 Navigation
@@ -159,12 +161,12 @@ Navigation
   padding-left: 1ch;
 }
 
-.site-nav div {
+.site-nav .icon-wrap {
   flex-grow: 1;
   margin-right: 5%;
 }
 
-.site-nav svg {
+.site-nav .icon {
   fill: none;
   margin: 0 0 0 auto;
   max-width: 3em;
@@ -174,7 +176,7 @@ Navigation
   stroke-width: 1.25px;
 }
 
-.site-nav p {
+.site-nav .label {
   flex-grow: 1.5;
   padding-left: 1ch;
   text-align: left;
@@ -185,7 +187,7 @@ Navigation
 }
 
 @supports (display: grid) {
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 30em) {
     .site-nav {
       max-width: calc(30em);
     }
@@ -199,7 +201,7 @@ Navigation
       min-width: auto;
     }
   }
-  @media screen and (min-width: 720px) {
+  @media screen and (min-width: 45em) {
     .site-nav {
       max-width: calc(45em);
     }
@@ -207,7 +209,7 @@ Navigation
       grid-template-columns: repeat(3, 1fr);
     }
   }
-  @media screen and (min-width: 1040px) {
+  @media screen and (min-width: 65em) {
     .site-nav {
       max-width: calc(60em + 6px);
     }
@@ -220,6 +222,8 @@ Navigation
 
 /* Header Nav ------------- */
 
+/* Header container */
+
 .site-header {
   background: hsl(0,0%,15%);
   line-height: 1;
@@ -229,7 +233,13 @@ Navigation
   z-index: 2;
 }
 
-@media screen and (min-height: 37em) {
+@media screen and (min-width: 36em) {
+  .site-header {
+    padding: 1.5em;
+  }
+}
+
+@media screen and (min-height: 33em) {
   .js-enabled .site-header {
     position: sticky;
     top: 0;
@@ -239,6 +249,9 @@ Navigation
 .site-header a {
   border: none;
 }
+
+
+/* Home link, nav container */
 
 .skip {
   display: none;
@@ -254,6 +267,24 @@ Navigation
   margin-bottom: 1.5em;
 }
 
+.site-header .site-nav {
+  margin: 0 auto;
+  max-width: 65ch;
+}
+
+@media screen and (min-width: 36em) {
+  .js-enabled .site-header .home {
+    margin: 0;
+  }
+  .js-enabled .site-header .site-nav {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+
+/* Interior nav container, About link */
+
 .site-header .interior-nav {
   margin: 0 auto;
   position: relative;
@@ -261,6 +292,7 @@ Navigation
 
 .js-enabled .site-header .interior-nav {
   display: inline-block;
+  margin: 0;
   padding-right: 11.5em;
   text-align: right;
 }
@@ -272,6 +304,9 @@ Navigation
 .js-enabled .site-header .about {
   margin: 0;
 }
+
+
+/* Variations container */
 
 .site-header .variations {
   border-radius: 0.25em;
@@ -291,6 +326,9 @@ Navigation
 .js-enabled .site-header .variations:hover {
   border-color: white;
 }
+
+
+/* Variations subhead */
 
 .site-header .v-subhead {
   background: hsl(0,0%,15%);
@@ -341,6 +379,9 @@ Navigation
   background-position: left 0 top -2.5em; /* down arrow highlighted */
 }
 
+
+/* Variations list */
+
 .site-header .v-list {
   border: 1px solid hsl(0,0%,40%);
   border-bottom: none;
@@ -353,6 +394,9 @@ Navigation
   border: none;
   display: block;
 }
+
+
+/* Variations list items and links */
 
 .site-header .v-item {
   border: 1px solid hsl(0,0%,40%);
@@ -378,13 +422,17 @@ Navigation
   padding: 0.25em;
 }
 
-/* Why doesn’t this work? */
-
-.site-header .vlink:focus,
-.site-header .vlink:hover {
-  background: hsl(0,0%,30%);
+.site-header .v-link:focus,
+.site-header .v-link:hover {
+  background: hsl(0,0%,40%);
 }
 
+.site-header .v-link.current:focus,
+.site-header .v-link.current:hover {
+  background: hsl(0,0%,15%);
+}
+
+.about .about a,
 .v-link.current,
 ._01 ._01,
 ._02 ._02,
@@ -417,23 +465,17 @@ Navigation
   z-index: 5;
 }
 
-.closed .v-link div {
+.closed .v-link .icon-wrap {
   display: none;
 }
 
-.closed .v-link p,
-.closed .v-link .amount {
-  padding: 0;
-}
-
-.js-enabled .site-header svg {
+.js-enabled .site-header .icon {
   width: 1.75em;
 }
 
-@media screen and (min-width: 40em) {
-  .site-header {
-    padding: 1.5em;
-  }
+.closed .v-link .label,
+.closed .v-link .amount {
+  padding: 0;
 }
 
 
@@ -563,6 +605,7 @@ Cubes
   }
 }
 
+
 /*
 ------------------------------
 About
@@ -666,6 +709,7 @@ About
   58.333333333333333% { opacity: 0; } /* 3.5s */
 }
 
+
 /*
 ------------------------------
 Home
@@ -683,6 +727,7 @@ Home
 .home-wrap span {
   white-space: nowrap;
 }
+
 
 /* Intro ------------------ */
 
@@ -785,6 +830,7 @@ Home
 
 }
 
+
 /*
 ------------------------------
 Footer
@@ -793,7 +839,6 @@ Footer
 
 footer {
   background: hsl(0,0%,15%);
-  /*margin-top: 1.5em;*/
   padding: 1.5em 1em 3em 1em;
   text-align: center;
 }
