@@ -715,19 +715,22 @@ About
   padding: 0 0 5vw 0;
 }
 
+
+/* Essay Text ------------- */
+
 .essay {
-  border-bottom: 4px solid hsl(0,0%,15%);
-  margin: 0 auto 5vw auto;
-  max-width: 65ch;
-  /*max-width: calc(65ch + 1em);*/
-  padding: 2em 0;
+  border-bottom: 1px solid hsl(0,0%,15%);
+  margin: 0 auto 1.5em auto;
+  max-width: 68ch;
+  padding: 3em 1.5ch;
 }
 
-/*@media screen and (min-width: 400px) {
+@media screen and (min-width: 36em) {
   .essay {
-    margin: 0;
+    max-width: calc(65ch + 3em);
+    padding: 4.5em 1.5em;
   }
-}*/
+}
 
 .essay h2,
 .essay h3 {
@@ -748,13 +751,52 @@ About
   margin-bottom: 1.5em;
 }
 
+.essay ol {
+  counter-reset: start-from 0; /* Initiate a counter */
+}
+
+.essay li h3:before {
+  counter-increment: start-from; /* Increment the counter by 1 */
+  content: counter(start-from) ". ";  /* Use the counter as content */
+}
+
+/*@media screen and (min-width: 65em) {
+  .essay li h3 {
+    position: relative;
+  }
+  .essay li h3:before {
+    -moz-font-feature-settings:"tnum" 1; 
+    -ms-font-feature-settings:"tnum" 1; 
+    -o-font-feature-settings:"tnum" 1; 
+    -webkit-font-feature-settings:"tnum" 1; 
+    font-feature-settings:"tnum" 1;
+    left: -3.5ch;
+    position: absolute;
+    text-align: right;
+    width: 3ch;
+  }
+}*/
+
+.essay ol + p {
+  margin-top: 3em;
+}
+
+@media screen and (min-width: 36em) {
+  .essay ol + p {
+    margin-top: 4.5em;
+  }
+}
+
+
+/* Essay Figures ---------- */
+
 .essay figure {
-  margin: 2em 0;
+  margin-top: 2em;
 }
 
 .essay figcaption {
   color: hsl(0,0%,40%);
-  margin-top: 0.75em;
+  margin: 0.75em 0 1.5em 0;
 }
 
 .about .cubes text {
@@ -769,22 +811,11 @@ About
   .about .cubes {
     grid-template-columns: 1fr 1fr;
   }
-  /*.about .cubes {
-    grid-template-columns: 1fr 1fr 1fr;
-  }*/
   @media screen and (min-width: 500px) {
-    /*.rotated.cubes {
-      grid-template-columns: repeat( 4, 1fr );
-    }*/
     .about .cubes {
       grid-template-columns: repeat( 4, 1fr );
     }
-  /*}
-  @media screen and (min-width: 600px) {
-    .about .cubes {
-      grid-template-columns: repeat( 6, 1fr );
-    }
-  }*/
+  }
 }
 
 .cubes text {
@@ -970,6 +1001,9 @@ Home
   }
 
 }
+
+
+/* Cube Animation --------- */
 
 /*
 
