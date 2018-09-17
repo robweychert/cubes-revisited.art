@@ -101,14 +101,27 @@ a:hover {
   border-bottom: 1px solid hsl(0,0%,60%);
 }
 
-cite:before {
+em,
+cite {
+  font-style: italic;
+}
+
+.home cite,
+footer cite {
+  font-style: normal;
+}
+
+.home cite:before,
+footer cite:before {
   content: "‘";
 }
 
-cite:after {
+.home cite:after,
+footer cite:after {
   content: "’";
 }
 
+img,
 svg {
   display: block;
   width: 100%;
@@ -205,7 +218,7 @@ Navigation
 @supports (display: grid) {
   @media screen and (min-width: 30em) {
     .site-nav {
-      max-width: calc(30em);
+      max-width: 30em;
     }
     .v-list {
       display: grid;
@@ -219,7 +232,7 @@ Navigation
   }
   @media screen and (min-width: 45em) {
     .site-nav {
-      max-width: calc(45em);
+      max-width: 45em;
     }
     .v-list {
       grid-template-columns: repeat(3, 1fr);
@@ -495,13 +508,15 @@ Navigation
 }
 
 
-/* Home Nav --------------- */
+/* Home, About Nav -------- */
 
+.about #main .v-subhead,
 .home .v-subhead {
-  color: white;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-name: pulse;
+  color: white;
+  text-align: center;
 }
 
 @keyframes pulse {
@@ -510,6 +525,7 @@ Navigation
   100% { opacity: 0.2; }
 }
 
+.about #main .v-subhead span,
 .home .v-subhead span {
   background:
     url(sprites.svg)
@@ -524,20 +540,17 @@ Navigation
   width: 1em;
 }
 
+.about #main .v-list,
 .home .v-list {
   margin-bottom: 2em;
 }
 
-.home .v-link,
-.prev-next .v-link {
+#main .v-link {
   border: 1px solid hsl(0,0%,15%);
   padding: 0.5em;
 }
 
-.home .v-link:focus,
-.home .v-link:hover,
-.prev-next .v-link:focus,
-.prev-next .v-link:hover {
+#main .v-link:hover {
   border-color: white;
 }
 
@@ -698,45 +711,80 @@ About
 ------------------------------
 */
 
+.about #main {
+  padding: 0 0 5vw 0;
+}
+
 .essay {
-  margin: 0 auto;
+  border-bottom: 4px solid hsl(0,0%,15%);
+  margin: 0 auto 5vw auto;
   max-width: 65ch;
+  /*max-width: calc(65ch + 1em);*/
+  padding: 2em 0;
+}
+
+/*@media screen and (min-width: 400px) {
+  .essay {
+    margin: 0;
+  }
+}*/
+
+.essay h2,
+.essay h3 {
+  color: white;
+}
+
+.essay h2 {
+  font-weight: bold;
+}
+
+.essay h3 {
+  margin-top: 3em;
+}
+
+.essay h2,
+.essay h3,
+.essay p {
+  margin-bottom: 1.5em;
+}
+
+.essay figure {
+  margin: 2em 0;
+}
+
+.essay figcaption {
+  color: hsl(0,0%,40%);
+  margin-top: 0.75em;
+}
+
+.about .cubes text {
+  display: none;
+}
+
+.rotated.cubes text {
+  display: block;
 }
 
 @supports (display: grid) {
-  .rotated.cubes {
-    grid-template-columns: repeat( 3, 1fr );
+  .about .cubes {
+    grid-template-columns: 1fr 1fr;
   }
-  .rotated.cubes .sequence {
-    grid-column: 1 / span 3;
-  }
+  /*.about .cubes {
+    grid-template-columns: 1fr 1fr 1fr;
+  }*/
   @media screen and (min-width: 500px) {
-    .rotated.cubes {
+    /*.rotated.cubes {
+      grid-template-columns: repeat( 4, 1fr );
+    }*/
+    .about .cubes {
       grid-template-columns: repeat( 4, 1fr );
     }
-    .rotated.cubes .sequence {
-      grid-column: 1 / span 2;
-      grid-row: 1 / span 2;
-    }
-  }
+  /*}
   @media screen and (min-width: 600px) {
-    .rotated.cubes {
+    .about .cubes {
       grid-template-columns: repeat( 6, 1fr );
     }
-    .rotated.cubes .sequence {
-      grid-column: 1 / span 3;
-      grid-row: 1 / span 3;
-    }
-  }
-  @media screen and (min-width: 700px) {
-    .rotated.cubes {
-      grid-template-columns: repeat( 7, 1fr );
-    }
-    .rotated.cubes .sequence {
-      grid-column: 1 / span 2;
-      grid-row: 1 / span 2;
-    }
-  }
+  }*/
 }
 
 .cubes text {
@@ -781,7 +829,7 @@ About
   12.500000000000001% { opacity: 0; }  /* 1.5s */
 }
 
-/*.rotation text {
+/*.rotated.cubes .rotation text {
   animation-duration: 6s;
   animation-iteration-count: infinite;
   animation-name: rotation;
