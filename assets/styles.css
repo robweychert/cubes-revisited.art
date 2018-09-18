@@ -653,7 +653,7 @@ Cubes
 
 .cubes div {
   border: 1px solid hsl(0,0%,15%);
-  background: black;
+  /*background: black;*/
   float: left;
   margin: 1.5px;
   position: relative;
