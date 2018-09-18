@@ -101,6 +101,31 @@ a:hover {
   border-bottom: 1px solid hsl(0,0%,60%);
 }
 
+@media print {
+  @page {
+    margin-top: 1in;
+    margin-bottom: 1in;
+  }
+  html {
+    font-size: 10pt;
+  }
+  body {
+    background: transparent;
+    color: black;
+  }
+  main {
+    background: transparent;
+  }
+  a {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  a[href^=http]:after {
+    content: " (" attr(href) ")";
+    overflow-wrap: break-word;
+  }
+}
+
 em,
 cite {
   font-style: italic;
@@ -144,6 +169,12 @@ Cubes
   }
 }
 
+@media print {
+  #main {
+    padding: 0;
+  }
+}
+
 /*
 ------------------------------
 Navigation
@@ -155,6 +186,12 @@ Navigation
 .site-nav {
   margin: 0 auto;
   max-width: 480px;
+}
+
+@media print {
+  .site-nav {
+    display: none;
+  }
 }
 
 .v-subhead:hover {
@@ -262,6 +299,12 @@ Navigation
   z-index: 2;
 }
 
+@media print {
+  .site-header {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 36em) {
   .site-header {
     padding: 1.5em;
@@ -272,6 +315,12 @@ Navigation
   .js-enabled .site-header {
     position: sticky;
     top: 0;
+  }
+}
+
+@media print {
+  .site-header {
+    background: transparent;
   }
 }
 
@@ -653,7 +702,6 @@ Cubes
 
 .cubes div {
   border: 1px solid hsl(0,0%,15%);
-  /*background: black;*/
   float: left;
   margin: 1.5px;
   position: relative;
@@ -704,6 +752,33 @@ Cubes
   }
 }
 
+@media print {
+  .cubes,
+  ._01 .cubes,
+  ._11 .cubes {
+    grid-gap: 3pt;
+    grid-template-columns: repeat( auto-fit, minmax(0.75in, 1fr) );
+    max-width: 100%;
+  }
+  .cubes div {
+    border: 0.5pt solid #ddd;
+    page-break-inside: avoid;
+  }
+  .d {
+    fill: #666;
+  }
+  .w {
+    fill: #999;
+  }
+  .t {
+    fill: #ccc;
+  }
+  .cubes p {
+    color: #999;
+    font-size: 8pt;
+  }
+}
+
 
 /*
 ------------------------------
@@ -732,9 +807,25 @@ About
   }
 }
 
+@media print {
+  .essay {
+    border: none;
+    margin: 4.5em auto;
+    max-width: 35em;
+    padding: 0;
+  }
+}
+
 .essay h2,
 .essay h3 {
   color: white;
+}
+
+@media print {
+  .essay h2,
+  .essay h3 {
+    color: black;
+  }
 }
 
 .essay h2 {
@@ -799,14 +890,6 @@ About
   margin: 0.75em 0 1.5em 0;
 }
 
-.about .cubes text {
-  display: none;
-}
-
-.rotated.cubes text {
-  display: block;
-}
-
 @supports (display: grid) {
   .about .cubes {
     grid-template-columns: 1fr 1fr;
@@ -816,6 +899,20 @@ About
       grid-template-columns: repeat( 4, 1fr );
     }
   }
+}
+
+@media print {
+  .about .cubes {
+    grid-template-columns: repeat( 4, 1fr );
+  }
+}
+
+.about .cubes text {
+  display: none;
+}
+
+.rotated.cubes text {
+  display: block;
 }
 
 .cubes text {
@@ -838,6 +935,35 @@ About
   animation-iteration-count: infinite;
   animation-name: part-sequence;
   opacity: 0;
+}
+
+.sequence .parts > .part01-alt,
+.sequence .parts > .part02-alt,
+.sequence .parts > .part03-alt,
+.sequence .parts > .part05-alt,
+.sequence .parts > .part09-alt {
+  animation-name: none;
+}
+
+@media print {
+  .cubes text {
+    fill: black;
+  }
+  .sequence .guidecube {
+    stroke: #ccc;
+    stroke-width: 1pt;
+  }
+  .sequence .parts > * {
+    animation-name: none;
+    opacity: 1;
+  }
+  .sequence .parts > .part01,
+  .sequence .parts > .part02,
+  .sequence .parts > .part03,
+  .sequence .parts > .part05,
+  .sequence .parts > .part09 {
+    opacity: 0;
+  }
 }
 
 .sequence .part01 { animation-delay: 00.0s; }
@@ -883,6 +1009,10 @@ Home
 
 .home #main {
   padding: 0 0 5vw 0;
+}
+
+@media print {
+  padding: 0;
 }
 
 .home-wrap {
@@ -1000,6 +1130,16 @@ Home
     }
   }
 
+}
+
+@media print {
+  .intro-title {
+    color: black;
+    font-size: 36pt;
+  }
+  .intro-about {
+    display: none;
+  }
 }
 
 
@@ -1265,6 +1405,14 @@ footer {
 @media screen and (min-width: 40em) {
   footer {
     padding: 2em 1.5em 4em 1.5em;
+  }
+}
+
+@media print {
+  footer {
+    border-top: 0.5pt solid #ddd;
+    margin-top: 0.5in;
+    padding: 1em 0 0 0;
   }
 }
 
