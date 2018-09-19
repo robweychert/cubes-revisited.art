@@ -885,6 +885,20 @@ About
   margin-top: 2em;
 }
 
+.essay .video {
+  margin-bottom: 2em;
+  padding-top: 75%;
+  position: relative;
+}
+
+.essay .video iframe {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .essay figcaption {
   color: hsl(0,0%,40%);
   margin: 0.75em 0 1.5em 0;
@@ -902,6 +916,9 @@ About
 }
 
 @media print {
+  .essay figcaption {
+    color: #ccc;
+  }
   .about .cubes {
     grid-template-columns: repeat( 4, 1fr );
   }
