@@ -321,6 +321,7 @@ Navigation
 
 @media screen and (min-height: 33em) {
   .js-enabled .site-header {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
   }
