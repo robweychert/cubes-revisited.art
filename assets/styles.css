@@ -51,7 +51,6 @@ table {
   border-spacing: 0;
 }
 
-
 /*
 ----------------------------------------
 CUBES REVISITED STYLES
@@ -152,6 +151,15 @@ svg {
   width: 100%;
 }
 
+::-moz-selection {
+  color: white;
+  background-color: hsl(0,0%,70%);
+}
+
+::selection {
+  color: white;
+  background-color: hsl(0,0%,70%);
+}
 
 /*
 ------------------------------
